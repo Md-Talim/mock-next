@@ -12,14 +12,12 @@ export const metadata: Metadata = {
   description: "Next-level mock interview experience.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const AppLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   return (
     <html lang="en" className="dark">
       <body className={`${monaSans.className} antialiased`}>{children}</body>
     </html>
   );
-}
+};
+
+export default AppLayout;
