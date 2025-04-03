@@ -4,8 +4,8 @@ import { Input } from "./ui/input";
 
 interface FormFieldProps<T extends FieldValues> {
   control: Control<T>;
-  name: Path<T>;
   label: string;
+  name: Path<T>;
   placeholder?: string;
   type?: "text" | "email" | "password";
 }
@@ -26,8 +26,8 @@ export const FormField = <T extends FieldValues>({
         <FormControl>
           <Input
             className="input"
-            type={type}
             placeholder={placeholder}
+            type={type}
             {...field}
           />
         </FormControl>
