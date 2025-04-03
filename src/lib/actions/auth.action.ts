@@ -100,3 +100,36 @@ export async function signUp(params: SignUpParams) {
     };
   }
 }
+
+export async function getCurrentUser(): Promise<User | null> {
+  const cookieStore = await cookies();
+  const sessionCookie = cookieStore.get("session")?.value;
+
+  if (!sessionCookie) {
+    return null;
+  }
+
+  try {
+    const decodecClaims = await auth.verifyIdToken(sessionCookie, true);
+    const userRecord = await db
+      .collection("users")
+      .doc(decodecClaims.uid)
+      .get();
+
+    if (!userRecord.exists) {
+      return null;
+    }
+
+    return {
+      ...userRecord.data(),
+      id: userRecord.id,
+    } as User;
+  } catch (error) {
+    throw new Error(`Error getting current user: ${error}`);
+  }
+}
+
+export async function isAuthenticated() {
+  const currentUser = await getCurrentUser();
+  return !!currentUser;
+}

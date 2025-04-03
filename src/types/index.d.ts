@@ -24,3 +24,9 @@ interface Interview {
   type: string;
   finalized: boolean;
 }
+
+interface User {
+  id: string;
+  email: string;
+  name: string;
+}
