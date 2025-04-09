@@ -110,7 +110,7 @@ export async function getCurrentUser(): Promise<User | null> {
   }
 
   try {
-    const decodecClaims = await auth.verifyIdToken(sessionCookie, true);
+    const decodecClaims = await auth.verifySessionCookie(sessionCookie, true);
     const userRecord = await db
       .collection("users")
       .doc(decodecClaims.uid)
