@@ -3,13 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDyEJ7j2hAa4kmd78aE4XY4tUeS9d5frRE",
-  authDomain: "mocknext-b6c8d.firebaseapp.com",
-  projectId: "mocknext-b6c8d",
-  storageBucket: "mocknext-b6c8d.firebasestorage.app",
-  messagingSenderId: "103363683516",
-  appId: "1:103363683516:web:6775f951a0857ea3f75cb9",
-  measurementId: "G-KLNPN9XN52",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
 const app = !getApps.length ? initializeApp(firebaseConfig) : getApp();
