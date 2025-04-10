@@ -45,3 +45,15 @@ export async function getLatestInterviews(
     ...doc.data(),
   })) as Interview[];
 }
+
+/**
+ * Fetches a single interview by its ID.
+ *
+ * @param id - The ID of the interview to be fetched.
+ * @returns A promise that resolves to an Interview object or null if the interview is not found.
+ */
+export async function getInterviewById(id: string): Promise<Interview | null> {
+  const interview = await db.collection("interviews").doc(id).get();
+
+  return interview.data() as Interview;
+}
