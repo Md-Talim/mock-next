@@ -12,9 +12,7 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-console.log(process.env.NEXT_PUBLIC_FIREBASE_API_KEY); // Shows the correct API key
-
 const app = !getApps.length ? initializeApp(firebaseConfig) : getApp();
 
-export const auth = getAuth(app); // console says there is the error
+export const auth = getAuth(app);
 export const db = getFirestore(app);

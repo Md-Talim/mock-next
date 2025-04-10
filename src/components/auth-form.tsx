@@ -67,7 +67,6 @@ export const AuthForm = ({ type }: { type: FormType }) => {
       } else {
         const { email, password } = values;
 
-        console.log(email, password);
         const userCredentials = await signInWithEmailAndPassword(
           auth,
           email,
@@ -75,7 +74,6 @@ export const AuthForm = ({ type }: { type: FormType }) => {
         );
 
         const idToken = await userCredentials.user.getIdToken();
-        console.log(idToken);
         if (!idToken) {
           toast.error("Sign in failed. Please try again.");
           return;

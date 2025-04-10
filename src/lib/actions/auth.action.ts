@@ -42,7 +42,6 @@ export async function SignIn(params: SignInParams) {
   const { email, idToken } = params;
 
   try {
-    console.log(email, idToken);
     const userRecord = await auth.getUserByEmail(email);
 
     if (!userRecord) {
