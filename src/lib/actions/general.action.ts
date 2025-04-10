@@ -1,4 +1,11 @@
 import { db } from "@/firebase/admin";
+
+/**
+ * Fetches interviews for a specific user by their user ID.
+ *
+ * @param userId - The ID of the user whose interviews are to be fetched.
+ * @returns A promise that resolves to an array of Interview objects or null if no interviews are found.
+ */
 export async function getInterviewsByUserId(
   userId: string,
 ): Promise<Interview[] | null> {
@@ -14,6 +21,13 @@ export async function getInterviewsByUserId(
   })) as Interview[];
 }
 
+/**
+ * Fetches the latest finalized interviews, excluding those of a specific user.
+ *
+ * @param userId - The ID of the user whose interviews are to be excluded.
+ * @param limit - The maximum number of interviews to fetch. Defaults to 20.
+ * @returns A promise that resolves to an array of Interview objects or null if no interviews are found.
+ */
 export async function getLatestInterviews(
   userId: string,
   limit = 20,

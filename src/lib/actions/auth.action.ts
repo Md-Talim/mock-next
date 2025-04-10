@@ -38,6 +38,15 @@ export async function setSessionCookie(idToken: string) {
   });
 }
 
+/**
+ * Signs in a user using their email and ID token.
+ *
+ * @param params - An object containing the user's email and ID token.
+ * @param params.email - The email of the user attempting to sign in.
+ * @param params.idToken - The Firebase ID token of the user.
+ * @returns An object indicating the success or failure of the sign-in attempt.
+ *          If successful, sets a session cookie for the user.
+ */
 export async function SignIn(params: SignInParams) {
   const { email, idToken } = params;
 
@@ -61,6 +70,17 @@ export async function SignIn(params: SignInParams) {
   }
 }
 
+/**
+ * Signs up a new user by creating a user record in the database.
+ *
+ * @param params - An object containing the user's sign-up details.
+ * @param params.uid - The unique identifier for the user.
+ * @param params.name - The name of the user.
+ * @param params.email - The email address of the user.
+ * @param params.password - The password for the user's account.
+ * @returns An object indicating the success or failure of the sign-up attempt.
+ *          If successful, the user record is created in the database.
+ */
 export async function signUp(params: SignUpParams) {
   const { uid, name, email } = params;
 
@@ -100,6 +120,13 @@ export async function signUp(params: SignUpParams) {
   }
 }
 
+/**
+ * Retrieves the current authenticated user based on the session cookie.
+ *
+ * @returns A promise that resolves to the current user object if authenticated,
+ *          or null if no valid session is found or the user does not exist.
+ * @throws An error if there is an issue verifying the session cookie or fetching the user data.
+ */
 export async function getCurrentUser(): Promise<User | null> {
   const cookieStore = await cookies();
   const sessionCookie = cookieStore.get("session")?.value;
@@ -128,6 +155,11 @@ export async function getCurrentUser(): Promise<User | null> {
   }
 }
 
+/**
+ * Checks if the current user is authenticated.
+ *
+ * @returns A promise that resolves to `true` if the user is authenticated, `false` otherwise.
+ */
 export async function isAuthenticated() {
   const currentUser = await getCurrentUser();
   return !!currentUser;
