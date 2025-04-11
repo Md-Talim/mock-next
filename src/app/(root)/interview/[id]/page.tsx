@@ -1,7 +1,10 @@
 import { Agent } from "@/components/agent";
 import { TechIcons } from "@/components/tech-icons";
 import { getCurrentUser } from "@/lib/actions/auth.action";
-import { getInterviewById } from "@/lib/actions/general.action";
+import {
+  getFeedbackByInterviewId,
+  getInterviewById,
+} from "@/lib/actions/general.action";
 import { getRandomInterviewCover } from "@/lib/utils";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -16,6 +19,11 @@ const InterviewPage = async ({ params }: RouteParams) => {
   if (!interview) {
     redirect("/");
   }
+
+  const feedback = await getFeedbackByInterviewId({
+    interviewId: id,
+    userId: user?.id!,
+  });
 
   return (
     <Fragment>
@@ -41,11 +49,12 @@ const InterviewPage = async ({ params }: RouteParams) => {
       </div>
 
       <Agent
-        userName={user?.name!}
-        userId={user?.id}
+        feedbackId={feedback?.id}
         interviewId={id}
-        type="interview"
         questions={interview.questions}
+        type="interview"
+        userId={user?.id}
+        userName={user?.name!}
       />
     </Fragment>
   );

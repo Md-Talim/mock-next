@@ -30,11 +30,12 @@ interface SavedMessage {
 }
 
 export const Agent = ({
-  type,
-  userName,
-  userId,
+  feedbackId,
   interviewId,
   questions,
+  type,
+  userId,
+  userName,
 }: Props) => {
   const router = useRouter();
   const [callStatus, setCallStatus] = useState(CallStatus.INACTIVE);
@@ -80,6 +81,7 @@ export const Agent = ({
 
     const handleGenerateFeedback = async (messages: SavedMessage[]) => {
       const { success, feedbackId: id } = await createFeedback({
+        feedbackId: feedbackId!,
         interviewId: interviewId!,
         userId: userId!,
         transcript: messages,

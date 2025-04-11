@@ -70,7 +70,7 @@ export async function getInterviewById(id: string): Promise<Interview | null> {
  * @returns A promise that resolves to an object indicating the success status and feedback ID if successful.
  */
 export async function createFeedback(params: CreateFeedbackParams) {
-  const { interviewId, userId, transcript } = params;
+  const { feedbackId, interviewId, userId, transcript } = params;
 
   try {
     const formattedTranscript = transcript
@@ -101,7 +101,7 @@ export async function createFeedback(params: CreateFeedbackParams) {
         "You are a professional interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories",
     });
 
-    const feedback = await db.collection("feedback").add({
+    const feedback = {
       interviewId: interviewId,
       userId: userId,
       totalScore: object.totalScore,
@@ -110,9 +110,19 @@ export async function createFeedback(params: CreateFeedbackParams) {
       areasForImprovement: object.areasForImprovement,
       finalAssessment: object.finalAssessment,
       createdAt: new Date().toISOString(),
-    });
+    };
 
-    return { success: true, feedbackId: feedback.id };
+    let feedbackRef;
+
+    if (feedbackId) {
+      feedbackRef = db.collection("feedback").doc(feedbackId);
+    } else {
+      feedbackRef = db.collection("feedback").doc();
+    }
+
+    await feedbackRef.set(feedback);
+
+    return { success: true, feedbackId: feedbackRef.id };
   } catch (error) {
     console.error("Error saving feedback:", error);
     return { success: false };
