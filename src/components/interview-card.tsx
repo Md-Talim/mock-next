@@ -1,4 +1,4 @@
-import { TechIcons } from "@/components/TechIcons";
+import { TechIcons } from "@/components/tech-icons";
 import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
 import { cn, getRandomInterviewCover } from "@/lib/utils";
 import dayjs from "dayjs";

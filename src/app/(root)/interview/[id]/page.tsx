@@ -1,5 +1,5 @@
 import { Agent } from "@/components/agent";
-import { TechIcons } from "@/components/TechIcons";
+import { TechIcons } from "@/components/tech-icons";
 import { getCurrentUser } from "@/lib/actions/auth.action";
 import { getInterviewById } from "@/lib/actions/general.action";
 import { getRandomInterviewCover } from "@/lib/utils";
