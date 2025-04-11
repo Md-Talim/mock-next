@@ -9,6 +9,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 
+export const revalidate = 0;
+
 const Page = async () => {
   const user = await getCurrentUser();
   const [userInterviews, latestInterviews] = await Promise.all([
