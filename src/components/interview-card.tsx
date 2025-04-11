@@ -1,4 +1,5 @@
 import { TechIcons } from "@/components/TechIcons";
+import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
 import { cn, getRandomInterviewCover } from "@/lib/utils";
 import dayjs from "dayjs";
 import Image from "next/image";
@@ -14,7 +15,7 @@ interface Props {
   createdAt?: string;
 }
 
-export const InterviewCard = ({
+export const InterviewCard = async ({
   interviewId,
   userId,
   role,
@@ -22,7 +23,11 @@ export const InterviewCard = ({
   techstack,
   createdAt,
 }: Props) => {
-  const feedback = null as Feedback | null;
+  const feedback: Feedback | null =
+    userId && interviewId
+      ? await getFeedbackByInterviewId({ interviewId, userId })
+      : null;
+
   const normalizedType = /mix/gi.test(type) ? "Mixed" : type;
 
   const badgeColor =
