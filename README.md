@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI-Powered Mock Interview Platform
 
-## Getting Started
+A modern web application that provides AI-driven mock interviews to help users prepare for technical interviews. Built with Next.js 15 and powered by advanced AI technologies.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **AI-Powered Interviews**: Real-time interview simulations using Google's AI SDK
+- **Real-time Voice Interaction**: Seamless voice-based communication using Vapi AI
+- **Modern UI/UX**: Beautiful and responsive interface built with Tailwind CSS
+- **Authentication**: Secure user authentication using Firebase
+- **Dark/Light Mode**: Theme switching capability
+- **Type Safety**: Full TypeScript implementation
+- **Form Validation**: Robust form handling with React Hook Form and Zod
+- **Real-time Updates**: Instant feedback and progress tracking
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: Next.js 15 with React 19
+- **Styling**: Tailwind CSS 4 with custom animations
+- **AI Integration**:
+  - Google AI SDK
+  - Vapi AI for voice interactions
+- **Authentication**: Firebase Authentication
+- **Database**: Firebase Firestore
+- **Form Handling**: React Hook Form with Zod validation
+- **UI Components**: Radix UI primitives
+- **State Management**: React Hooks
+- **Type Safety**: TypeScript
+- **Code Quality**: ESLint, Prettier
+
+## 🏗️ Project Structure
+
+```
+src/
+├── app/          # Next.js app router pages
+├── components/   # Reusable UI components
+├── lib/          # Utility functions and helpers
+├── types/        # TypeScript type definitions
+├── firebase/     # Firebase configuration
+└── constants/    # Application constants
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   - Create a `.env.local` file with required API keys
+   - Configure Firebase credentials
+   - Add Google AI SDK credentials
 
-## Learn More
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔑 Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a `.env.local` file with the following variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `NEXT_PUBLIC_FIREBASE_API_KEY`
+- `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+- `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+- `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+- `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+- `NEXT_PUBLIC_FIREBASE_APP_ID`
+- `GOOGLE_AI_API_KEY`
+- `VAPI_AI_API_KEY`
 
-## Deploy on Vercel
+## 🎯 Key Technical Achievements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Implemented real-time AI-powered interview simulations
+- Built a scalable architecture using Next.js App Router
+- Integrated multiple AI services for enhanced interview experience
+- Developed a responsive and accessible UI using modern CSS practices
+- Implemented secure authentication and data management
+- Created type-safe API integrations and form handling
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
